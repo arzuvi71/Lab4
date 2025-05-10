@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/navbar.html :: header( title = 'Clínicas')}"></head>
+<body>
+<div class="container">
+    <h2>Lista de Clinicas</h2>
+    <a class="btn btn-primary mt-4 mb-4" th:href="@{'/clinica/new'}">Crear Clinica</a>
+    <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Número telefónico</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product, info : ${listaClinicas}">
+            <td th:text="${info.index + 1}"></td>
+            <td th:text="${Clinica.name}"></td>
+            <td th:text="${clinica.address}"></td>
+            <td th:text="${clinica.phone_number}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script th:replace="~{fragments/navbar.html :: footer-bootstrap}"></script>
+</body>
+</html>
